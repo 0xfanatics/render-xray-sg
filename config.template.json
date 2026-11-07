@@ -1,0 +1,1 @@
+{"inbounds":[{"listen":"0.0.0.0","port":10000,"protocol":"vless","settings":{"clients":[{"flow":"","id":"UUID-FROM-ENV"}],"decryption":"none"},"streamSettings":{"network":"ws","wsSettings":{"path":"WS_PATH-FROM-ENV"}}}],"log":{"loglevel":"warning"},"outbounds":[{"protocol":"freedom","settings":{}},{"protocol":"blackhole","settings":{},"tag":"blocked"}]}

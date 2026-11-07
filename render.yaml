@@ -1,0 +1,19 @@
+# Render Blueprint — 仅在 Dockerfile + Git 仓库路线下可用
+# 注意：Render 没有“上传文件夹部署”入口，Blueprint 也必须从 Git 仓库读取。
+# 不要把 credentials.env 提交进仓库。
+services:
+  - type: web
+    name: render-xray-sg
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: singapore
+    plan: free
+    # Health Check Path 留空：Render 此时做端口/TCP 检查。
+    # 不要填 WS_PATH：xray 对非 WS 的 GET 返回 400/404，会被判不健康、反复重启。
+    healthCheckPath: ""
+    envVars:
+      - key: UUID
+        sync: false
+      - key: WS_PATH
+        sync: false
+    # PORT 由 Render 自动注入（默认 10000），不要在 render.yaml / 环境变量里写死。
